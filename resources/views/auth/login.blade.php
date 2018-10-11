@@ -55,9 +55,9 @@
                   </div>
                 </div>
                 <div id="login-form">
-                    <div class="form-group ">
+                    <div class="form-group has-error">
                       <div class="col-xs-12">
-                        <input class="form-control" type="email" required="" placeholder="Email" name="email">
+                        <input class="form-control is-invalid" type="email" required="" placeholder="Email" name="email">
                       </div>
                     </div>
                     <div class="form-group ">
