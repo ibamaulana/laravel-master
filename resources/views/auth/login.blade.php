@@ -30,18 +30,25 @@
   <div class="cssload-speeding-wheel"></div>
 </div>
 <section id="wrapper" class="login-register">
+    @if ($errors->has('email'))
+        <div class="alert alert-danger text-center"><strong>{{ $errors->first('email') }}</strong></div>
+    @endif
   <div class="login-boxku" style="border-radius: 25px;box-shadow: 1px 2px 20px 2px #393b3c94;">
-    <div class="white-box" style="border-radius: 25px">
+
+    <div class="white-box" style="border-radius: 25px;margin-bottom: 0px">
         <div class="row">
           <form class="form-horizontal" id="loginform" action="{{ route('login') }}" method="POST">
                 {{ csrf_field() }}
                 <div class="col-md-6">
                 <div class="form-group">
                   <div class="col-md-12 text-center">
-                    <div class="user-thumb text-center"> <img alt="thumbnail" class="img-circle" width="220" src="{{ url('image/logo-app.png') }}" style="position: relative;z-index: 1;padding-top: 25px">
+                    <div class="user-thumb text-center" id="logo"> <img alt="thumbnail" class="img-circle" width="220" src="{{ url('image/logo-app.png') }}" style="position: relative;z-index: 1;padding-top: 25px">
+                    </div>
+                    <div class="user-thumb text-center" style="display: none" id="loading-form"> <img alt="thumbnail" class="img-circle" width="220" src="{{ url('image/logo-load.gif') }}" style="position: relative;z-index: 1;padding-top: 25px">
                     </div>
                   </div>
                 </div>
+                
             </div>
             <div class="col-md-6">
                 <div class="form-group">
@@ -50,20 +57,28 @@
                     <div class="alert alert-success text-center">{{ session('confirmed') }}</div>
                   </div>
                   @endif
-                  <div class="col-md-12" id="erroralert" style="display: none">
-                    <div class="alert alert-danger text-center">ERROR ! <div id="errormessage"> </div></div>
-                  </div>
                 </div>
                 <div id="login-form">
-                    <div class="form-group has-error">
+                    <div class="form-group">
                       <div class="col-xs-12">
-                        <input class="form-control is-invalid" type="email" required="" placeholder="Email" name="email">
+                        <input class="form-control" type="email" required="" placeholder="Email" name="email" autofocus>
                       </div>
                     </div>
                     <div class="form-group ">
                       <div class="col-xs-12">
                         <input class="form-control" type="password" required="" placeholder="Password" name="password">
                       </div>
+                    </div>
+                    <div class="form-group ">
+                        <div class="col-xs-6">
+                            <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
+                            <label class="form-check-label" for="remember">
+                                {{ __('Remember Me') }}
+                            </label>
+                        </div>
+                        <div class="col-xs-6 text-right">
+                            <a href="{{ url('login/facebook') }}"><button class="btn btn-facebook waves-effect waves-light" type="button"><i class="fa fa-facebook"></i></button></a>
+                        </div>
                     </div>
                     <div class="form-group text-center">
                       <div class="col-xs-12">
@@ -83,6 +98,7 @@
             </div>
           </form>
         </div>
+
         {{-- <div class="row">
             <div class="col-md-12 text-center">
                 <p>Dont have an account ?<a href="{{ route('register') }}"> Register Here</a></p>
@@ -111,40 +127,9 @@
 <script src="{{ asset('plugins/bower_components/styleswitcher/jQuery.style.switcher.js') }}"></script>
 {{-- Custom Script --}}
 <script type="text/javascript">
-$('#loginform').on('submit',function(e){
-    e.preventDefault();
-    var formData = new FormData($(this)[0]);
-    $.ajax({
-        url:'{{ route('login') }}',
-        data:formData,
-        type:'POST',
-        contentType: false,
-        processData: false,
-        beforeSend:function(){
-            $('#loading-form').css('display','block');
-            $('#login-form').css('display','none');
-            $('#erroralert').css('display','none');
-            $('#successalert').css('display','none');
-        },
-        success:function(data){
-            if(data['data']['error'] == null){
-                $('#loading-form').css('display','none');
-                $('#login-form').css('display','none');
-                $('#successalert').css('display','block');
-                window.location.href = '{{ url('/') }}';
-            }else{
-                $('#loading-form').css('display','none');
-                $('#login-form').css('display','block');
-                $('#erroralert').css('display','block');
-                $('#errormessage').html(data['data']['error']['message']);
-                
-                return true;
-            }
-
-        }
-
-    });
-    return false;
+$('#loginform').on('submit',function(){
+    $('#loading-form').css('display','block');
+    $('#logo').css('display','none');
 });
 </script>
 </body>
