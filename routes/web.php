@@ -22,3 +22,9 @@ Route::get('/home', 'HomeController@index')->name('home');
 //social login
 Route::get('login/facebook', 'Auth\LoginController@redirectToProvider');
 Route::get('login/facebook/callback', 'Auth\LoginController@handleProviderCallback');
+
+//panel
+Route::group(['prefix' => 'panel', 'middleware' => 'auth', 'namespace' => 'Backend'], function(){
+	Route::get('dashboard', 'DashboardController@index')->name('panel.dashboard');
+	Route::get('product', 'ProductController@index')->name('panel.product');
+});

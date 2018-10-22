@@ -17,6 +17,9 @@
   top: calc(50% - 3.5px);
   left: calc(50% - 3.5px);
 }
+.white-box{
+  border-radius: 10px;
+}
 /*Just change your choise color here its theme Colors*/
 body {
   background: #fff;
