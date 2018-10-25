@@ -10,6 +10,7 @@
         "laravel/framework": "5.7.*",
         "laravel/socialite": "^3.1",
         "laravel/tinker": "^1.0",
+        "nwidart/laravel-modules": "^4.0",
         "spatie/laravel-permission": "^2.21"
     },
     "require-dev": {
@@ -26,7 +27,8 @@
             "database/factories"
         ],
         "psr-4": {
-            "App\\": "app/"
+            "App\\": "app/",
+            "Modules\\": "Modules/"
         }
     },
     "autoload-dev": {

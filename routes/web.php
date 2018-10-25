@@ -26,5 +26,4 @@ Route::get('login/facebook/callback', 'Auth\LoginController@handleProviderCallba
 //panel
 Route::group(['prefix' => 'panel', 'middleware' => 'auth', 'namespace' => 'Backend'], function(){
 	Route::get('dashboard', 'DashboardController@index')->name('panel.dashboard');
-	Route::get('product', 'ProductController@index')->name('panel.product');
 });
