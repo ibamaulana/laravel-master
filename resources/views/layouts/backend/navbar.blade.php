@@ -2,13 +2,18 @@
     <div class="navbar-header">
         <div class="top-left-part" style="text-align: center;">
             <!-- Logo -->
-            <a class="logo" href="{{ url('/') }}">
+           {{--  <a class="logo" href="{{ url('/') }}">
                 <b>
                     <img src="{{ url('image/logo-app.png') }}" alt="home" class="light-logo"  height="80%" />
                 </b>
                 <span class="hidden-xs" style="color: black;">
                     <b style="text-align:center">{{ env('APP_NAME') }}</b>
                 </span> 
+            </a> --}}
+            <a class="logo">
+                    <span class="hidden-xs" style="color: black;">
+                        <b style="text-align:center">{{ env('APP_NAME') }}</b>
+                    </span> 
             </a>
         </div>
         <!-- /Logo -->

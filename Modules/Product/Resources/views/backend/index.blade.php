@@ -26,7 +26,7 @@
                                 <h3 class="box-title m-l-10 m-t-5">MANAGE Product</h3>
                             </div>
                             <div class="col-md-4 text-right">
-                                <a data-toggle="modal" data-target="#modalCreate" class="formButton"><button type="button" class="btn btn-info btn-rounded m-r-10"><i class="ti-plus"></i> Create Product</button></a>
+                                <a data-toggle="modal" data-target="#modalCreate" class="formButton" data-modal='{"formtype":"create"}'><button type="button" class="btn btn-info btn-rounded m-r-10"><i class="ti-plus"></i> Create Product</button></a>
                             </div>
                         </div>
                         <hr>
@@ -70,12 +70,10 @@
         getTabel('{{ route('panel.product.tabel') }}',[],'GET');
         //on click jquery
         $('.formButton').on('click',function(){
-            var id = $(this).attr('data-id');
+            var data = $(this).data('modal');
             $.ajax({
-                url: '',
-                data: {
-                    id : id
-                },
+                url: '{{ route('panel.product.form') }}',
+                data: data,
                 type: 'GET',
                 beforeSend: function(){
                     $('.modal-title').html('Create Product');

@@ -36,4 +36,13 @@ class ProductController extends Controller
 
         return view('product::backend.table')->withProduct($product);
     }
+
+    public function form(Request $request)
+    {
+        $type = $request->input('formtype');
+
+        if ($type == 'create') {
+            return view('product::backend.form');
+        }
+    }
 }

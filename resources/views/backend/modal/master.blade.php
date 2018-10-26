@@ -3,13 +3,13 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title"></h4>
+                <h4 class="modal-title" style="font-weight: 500"></h4>
             </div>
             <div class="modal-body load-data" style="display: block">
                 <div class="row">
                 <div class="col-md-12 text-center">
                     <img src="{{ url('image/load.gif') }}" height="150px">
-                    <p>Loading Data, Please wait...</p>
+                    <p>Updating Data, Please wait...</p>
                 </div>
             </div>
             </div>
@@ -31,7 +31,7 @@
                 <div class="row">
                     <div class="col-md-12 text-center">
                         <img src="{{ url('image/load.gif') }}" height="150px">
-                        <p>Loading Data, Please wait...</p>
+                        <p>Updating Data, Please wait...</p>
                     </div>
                 </div>
             </div>
